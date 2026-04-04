@@ -1,0 +1,15 @@
+{
+  "name": "workforce-ai",
+  "version": "1.0.0",
+  "description": "WorkForce AI — Full-stack MERN Employee Management Platform",
+  "private": true,
+  "scripts": {
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "seed": "cd backend && npm run seed",
+    "build": "cd frontend && npm run build"
+  },
+  "keywords": ["mern", "employee-management", "ai", "react", "nodejs", "mongodb"],
+  "license": "MIT"
+}
