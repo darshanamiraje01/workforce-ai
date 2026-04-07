@@ -1,0 +1,12 @@
+const express = require('express');
+const r = express.Router();
+const { protect, authorize } = require('../middleware/auth.middleware');
+const c = require('../controllers/task.controller');
+r.use(protect);
+r.get('/', c.getTasks);
+r.post('/', authorize('admin', 'manager'), c.createTask);
+r.get('/:id', c.getTask);
+r.put('/:id', c.updateTask);
+r.delete('/:id', authorize('admin', 'manager'), c.deleteTask);
+r.post('/:id/comments', c.addComment);
+module.exports = r;
