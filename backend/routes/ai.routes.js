@@ -1,0 +1,13 @@
+const express = require('express');
+const r = express.Router();
+const { protect, authorize } = require('../middleware/auth.middleware');
+const c = require('../controllers/combined.controller');
+r.use(protect);
+r.get('/productivity/:id', c.getProductivityScore);
+r.get('/productivity', c.getProductivityScore);
+r.get('/at-risk-tasks', c.getAtRiskTasks);
+r.get('/workload-balance', authorize('admin', 'manager'), c.getWorkloadBalance);
+r.get('/performance-summary/:id', c.getPerformanceSummary);
+r.get('/performance-summary', c.getPerformanceSummary);
+r.get('/team-insights', authorize('admin', 'manager'), c.getTeamAIInsights);
+module.exports = r;
